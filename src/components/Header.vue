@@ -3,6 +3,8 @@
       <a href="#">link の blog</a>
       <div class="header">
         <h1>link の blog</h1>
+        <p class="animation-content" ref="animationText">{{ text }}</p>
+        <svg @click="goToArticle" t="1729393614238" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3349" width="200" height="200"><path d="M512 297.6a42.24 42.24 0 0 1-22.08-6.4l-256-160a41.6 41.6 0 0 1 44.16-70.4L512 207.04l233.92-146.24a41.6 41.6 0 0 1 44.16 70.4l-256 160a42.24 42.24 0 0 1-22.08 6.4z" p-id="3350" fill="#ffffff"></path></svg>  
         
       </div>
     </div>
@@ -11,7 +13,60 @@
   <script>
   export default {
     name: "Header",
+    data() {
+        return {
+             textStages : [
+                "/* 欢迎大家来到我的博客~ */", // 阶段1
+                "/* 欢迎大家来到我的博客~ */", // 阶段1
+                "/* 迎大家来到我的博~ */",     // 阶段2
+                "/* 大家来到我的~ */",           // 阶段3
+                "/* 家来到我~ */",             // 阶段4
+                "/* 来到~ */",               // 阶段5
+                "/* ~ */",           // 阶段5
+                "/**/",           // 阶段5
+            ],
+            text: "/* 欢迎大家来到我的博客~ */",
+            index: 0,
+            direction: 1,
+            normalSpeed: 200,  // 正常速度
+            fastSpeed: 100,    // 加快速度
+            intervalId: null   // 保存 interval 的 ID，便于动态调整速度
+        }
+    },
+    mounted() {
+        this.startAnimation(this.normalSpeed);  // 初始正常速度
+    },
+    methods: {
+        startAnimation(speed) {
+            // 清除已有的定时器
+            if (this.intervalId) {
+                clearInterval(this.intervalId);
+            }
+            // 设置新的定时器
+            this.intervalId = setInterval(this.updateText, speed);
+        },
+        updateText() {
+            this.text = this.textStages[this.index];
+            this.index += this.direction;
+
+            // 当 index 达到最大值时反转方向并加快速度
+            if (this.index === this.textStages.length - 1) {
+                this.direction = -1;  // 递减
+                this.startAnimation(this.normalSpeed);  // 设置为加快速度
+            }
+
+            // 当 index 达到最小值时反转方向并恢复正常速度
+            if (this.index === 0) {
+                this.direction = 1;  // 递增
+                this.startAnimation(this.fastSpeed);  // 恢复正常速度
+            }
+        },
+        goToArticle() {
+          this.$router.push('/article');
+        }
+    }
   };
+
   </script>
   
   <style scoped>
@@ -20,15 +75,13 @@
   .top-back {
     width: 100%;
     height: 100vh;
-    position: relative;
-    background-image: url(../assets/img/header-back.jpeg);
+    background-image: url(@/assets/img/header-back.jpeg);
     background-position: center;
     background-size: cover;
   }
   
   .header {
     width: 80%;
-    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,9 +96,18 @@
   .header h1 {
     font-family: 'pingfangzhuiguang';
     font-size: 80px;
-    margin-bottom: 60px;
     color: #fff;
-  }
+    margin-bottom: 10px; /* 设置 h1 和 p 标签的上下间距 */
+}
+
+.header>p {
+    color: #fff;
+    font-family: 'alipuhui';
+    letter-spacing: 0.2em;
+    /* background-color: rgba(129, 170, 187, 0.7); */
+    margin-top: 5px; /* 设置 h1 和 p 标签的上下间距 */
+}
+
   
   .top-back > a {
     font-size: 24px;
@@ -55,6 +117,35 @@
     margin-top: 10px;
     margin-left: 20px;
     text-decoration: none;
+    transition: all 0.4s ease;
+  }
+
+  .top-back>a:hover{
+    margin-top: 9px;
+    margin-left: 21px;
+  }
+
+  .icon {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 55vh;
+    transition: all 1.5s ease;
+    animation: icon-float 1.5s ease-in-out infinite;
+  }
+
+  @keyframes icon-float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
   </style>
   
+

@@ -29,6 +29,8 @@
   
   <style scoped>
 
+
+
     .notice-content {
         font-family: 'alipuhui';
     }
@@ -38,11 +40,27 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        width: 270px;
+        height: 350px;
+        overflow: hidden;
+        line-height: 20px;
+        margin-top: 40px;
+    } 
+    .autor-container:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .avatar-img {
+        width: 80px;
+        height: 80px;
     }
     
     .avatar-img img {
-        width: 50px;
-        height: 50px;
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
     }
     

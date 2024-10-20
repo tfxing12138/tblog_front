@@ -3,7 +3,6 @@
     <Header />
     <div class="content">
       <Article />
-      <Author />
     </div>
   </div>
 
@@ -12,14 +11,12 @@
 <script>
 import Header from './components/Header.vue';
 import Article from './components/Article.vue';
-import Author from './components/Author.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
-    Article,
-    Author
+    Article
   },
 };
 </script>
@@ -29,4 +26,5 @@ export default {
   width: 100%;
   height: 100vh;
 }
+
 </style>
