@@ -24,6 +24,7 @@
                 "/* 来到~ */",               // 阶段5
                 "/* ~ */",           // 阶段5
                 "/**/",           // 阶段5
+                "//",           // 阶段5
             ],
             text: "/* 欢迎大家来到我的博客~ */",
             index: 0,
@@ -71,11 +72,10 @@
   
   <style scoped>
 
-
   .top-back {
     width: 100%;
     height: 100vh;
-    background-image: url(@/assets/img/header-back.jpeg);
+    background-image: url(@/assets/img/哲风壁纸.png);
     background-position: center;
     background-size: cover;
   }
