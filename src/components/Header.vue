@@ -4,7 +4,10 @@
       <div class="header">
         <h1>link の blog</h1>
         <p class="animation-content" ref="animationText">{{ text }}</p>
-        <svg @click="goToArticle" t="1729393614238" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3349" width="200" height="200"><path d="M512 297.6a42.24 42.24 0 0 1-22.08-6.4l-256-160a41.6 41.6 0 0 1 44.16-70.4L512 207.04l233.92-146.24a41.6 41.6 0 0 1 44.16 70.4l-256 160a42.24 42.24 0 0 1-22.08 6.4z" p-id="3350" fill="#ffffff"></path></svg>  
+        
+        <a href="Article">
+          <svg t="1729393614238" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3349" width="200" height="200"><path d="M512 297.6a42.24 42.24 0 0 1-22.08-6.4l-256-160a41.6 41.6 0 0 1 44.16-70.4L512 207.04l233.92-146.24a41.6 41.6 0 0 1 44.16 70.4l-256 160a42.24 42.24 0 0 1-22.08 6.4z" p-id="3350" fill="#ffffff"></path></svg>  
+        </a>
         
       </div>
     </div>
@@ -61,9 +64,6 @@
                 this.direction = 1;  // 递增
                 this.startAnimation(this.fastSpeed);  // 恢复正常速度
             }
-        },
-        goToArticle() {
-          this.$router.push('/article');
         }
     }
   };

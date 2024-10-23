@@ -113,10 +113,11 @@ export default {
 };
 </script>
   
-<style scoped>
+<style>
+
 ul {
     list-style: none;
-    width: 60%;
+    width: 68%;
 }
 
 li {
@@ -124,10 +125,15 @@ li {
 }
 
 .wrap {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     display: flex;
-    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.author-container {
+    width: 300px;
+    height: 100%;
 }
 
 .article {
@@ -147,10 +153,11 @@ li {
 }
 
 .article-right-info {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 80%;
+    padding-bottom: 20px;
     display: flex;
+    justify-content: space-between;
+    margin: 0 auto 10px auto;
 }
 
 .article-right-info a{
@@ -158,6 +165,12 @@ li {
     flex-direction: column;
     align-items: center;
     color: #000000;
+    margin-left: 5px;
+    transition: transform 0.2s;
+}
+
+.article-right-info a:first-child {
+    margin-left: 0;
 }
 
 .article-right-info a>div:nth-child(2) {
@@ -170,7 +183,7 @@ li {
 }
 
 .article-right-info a {
-    width: 100px;
+    width: 80px;
     height: 40px;
     padding-bottom: 8px;
     border-radius: 5px;
@@ -182,6 +195,7 @@ li {
     opacity: 1; /* 保持文字完全不透明 */
     backdrop-filter: blur(5px); /* 添加背景模糊效果 */
     -webkit-backdrop-filter: blur(5px); /* 兼容性处理 */
+    transform: scale(1.2); /* 悬浮时放大1.1倍 */
 }
 
 
@@ -210,10 +224,6 @@ li {
     margin-top: 10px;
     color: #64676b;
     font-size: 14px;
-}
-
-.author-container {
-    margin-left: 120px;
 }
 
 
@@ -269,9 +279,6 @@ li {
 }
 
 .author-info {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -312,8 +319,10 @@ li {
     font-family: 'alipuhui';
     font-size: 20px;
     font-weight: bold;
-    display: block;
     letter-spacing: 0.2em;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 5px 0;
 }
 
 .autor-info:hover {
@@ -323,8 +332,9 @@ li {
 .personal {
     display: flex;
     justify-content: space-between;
-    width: 50%;
-    margin-bottom: 20px;
+    align-items: center;
+    width: 55%;
+    margin: 0 auto;
 }
 
 .contact-me{

@@ -2,7 +2,7 @@
   <div>
     <Header />
     <div class="content">
-      <Article />
+      <Article ref="article" />
     </div>
   </div>
 
@@ -18,6 +18,14 @@ export default {
     Header,
     Article
   },
+  methods: {
+    scrollToArticle() {
+      const article = this.$refs.article;
+      if(article) {
+        article.scrollIntoView({behavior: 'smooth'});
+      }
+    }
+  }
 };
 </script>
 
